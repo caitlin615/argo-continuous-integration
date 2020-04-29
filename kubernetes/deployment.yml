@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: argo
   name: argo-webhook
   labels:
     app: argo-webhook
@@ -15,14 +14,6 @@ spec:
       labels:
         app: argo-webhook
     spec:
-      serviceAccountName: argo
       containers:
       - name: argo-webhook
-        image: bouwe/argo-continuous-integration:0.1.5
-        resources:
-          limits:
-            cpu: 100m
-            memory: 100Mi
-          requests:
-            cpu: 20m
-            memory: 20Mi
+        image: celfring/argo-ci
